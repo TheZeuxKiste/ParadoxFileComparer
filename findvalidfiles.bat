@@ -27,7 +27,7 @@ for /f "delims=" %%i in ('dir /b/s "..\%arg%" 2^>nul') do (
 :::::::::::::::::::::::::::::::::::::::::::::::::::::
 rem search secondary directory, your pdx mods folder
 :::::::::::::::::::::::::::::::::::::::::::::::::::::
-
+if "%~dp0" == "%modsfolder%" ( goto skipLoop )
 rem change dir to your local mods folder in Documents --------------------(TODO implement customizable mod location to make compatible with other pdx titles.)
 chdir /d "%modsfolder%"
 rem quotes protect path, errors could occur if path contains spaces
@@ -43,7 +43,7 @@ for /f "delims=" %%b in ('dir /b/s "..\%arg%" 2^>nul') do (
 
 rem checks if script found anything, if not, itll abort
 if "!var!" == "" ( goto ProcessErrorNothingFound )
-
+:skipLoop
 rem echo the findings for other programs to catch
 echo !var!
 

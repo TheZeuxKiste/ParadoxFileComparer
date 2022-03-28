@@ -24,7 +24,7 @@ def pullFiles(var):
 def main():
     # Parse arguments into the program
     parser = argparse.ArgumentParser()
-    parser.add_argument("askedfile",
+    parser.add_argument("fileInQuestion",
                         help="openfiles.py: what file do you want? exact matches only")
     args = parser.parse_args()
     
@@ -35,7 +35,7 @@ def main():
         dlc_load = json.load(f)
     # pull string, format it correctly
     delim = "<-split->"
-    rexp = re.sub(r'\s(?=[A-Z]:\\)', delim, pullFiles(args.askedfile)).split(delim)
+    rexp = re.sub(r'\s(?=[A-Z]:\\)', delim, pullFiles(args.fileInQuestion)).split(delim)
     
     #################################################
     ####### mainpart: compare the two strings #######
