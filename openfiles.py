@@ -78,22 +78,8 @@ def main():
                 if stringOut == matchJson.group('out'): #if the mod is in the playset, add its path to the final output file
                     fileString = fileString + " " + obj
                     
-        # for i in fileString:
-        #     j = j + 1
-        #     if j >= 8000:
-        #         raise StringTooLargeError
-    # except StringTooLargeError:
-    #     print("i found too many files, sorry")
-    #     print("because of limitation of the commandline, i can only pass 8000 characters to it")
-    #     print("and because i found too many matches to your query, the command line would throw an error")
-    #     print("im trying to fix this problem, but itll take time!")
-        
-    # else:
-    #     exeLoc="\'"+exeLoc+"\\code.exe\'"
-    #     subprocess.run(['cmd.exe','/c', exeLoc, fileString], shell=True)#syntax error, probably the quote marks
     
     s = r" "
-    countr = 0
     
     tesSTR = re.sub(r'\s(?=[A-Z]:\\)', delim, fileString).split(delim)
     
