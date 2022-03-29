@@ -25,25 +25,25 @@ for /f "delims=" %%i in ('dir /b/s "..\%arg%" 2^>nul') do (
 )
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::
-rem search secondary directory, your pdx mods folder
+rem search secondary directory, your pdx mods folder, CURRENTLY OUT OF ORDER, ICE CREAM MAKER BROKE!!!!
 :::::::::::::::::::::::::::::::::::::::::::::::::::::
-if "%~dp0" == "%modsfolder%" ( goto skipLoop )
-rem change dir to your local mods folder in Documents --------------------(TODO implement customizable mod location to make compatible with other pdx titles.)
-chdir /d "%modsfolder%"
-rem quotes protect path, errors could occur if path contains spaces
 
-rem checks for invalid mods folder path, sends you to endoffile and throws errorlevel 2
-if %errorlevel% == 1 ( goto ProcessErrorInvalidPath )
+@REM rem change dir to your local mods folder in Documents --------------------(TODO implement customizable mod location to make compatible with other pdx titles.)
+@REM chdir /d "%modsfolder%"
+@REM rem quotes protect path, errors could occur if path contains spaces
 
-rem iterate through the current folder and its sub folders, without default delims(delimiters)
-for /f "delims=" %%b in ('dir /b/s "..\%arg%" 2^>nul') do (
+@REM rem checks for invalid mods folder path, sends you to endoffile and throws errorlevel 2
+@REM if %errorlevel% == 1 ( goto ProcessErrorInvalidPath )
+
+@REM rem iterate through the current folder and its sub folders, without default delims(delimiters)
+@REM for /f "delims=" %%b in ('dir /b/s "..\%arg%" 2^>nul') do (
     
-    set var=%%b !var!
-)
+@REM     set var=%%b !var!
+@REM )
 
 rem checks if script found anything, if not, itll abort
 if "!var!" == "" ( goto ProcessErrorNothingFound )
-:skipLoop
+
 rem echo the findings for other programs to catch
 echo !var!
 
