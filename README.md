@@ -49,7 +49,9 @@ where your "current Playset" is stored, only gets updated when you press said St
 ### Short Term Goals
 
 * integrate the `findvalidfiles.bat` into the main program
+  * use paths in mod descriptor files as reference
 * specify multiple files at once to open
+* allow User to switch between "only open mods in current Profile" and "Open every Valid file"
 
 ### Mid Term Goals
 
@@ -72,7 +74,7 @@ none, for now
 
 ### What i dont plan to do
 
-* Automate the Conflict Finding Process. Its just waay too much out of scope for a little
+* Automate the Conflict Finding Process. Its just waay too much out of scope for a little, i dont plan to create PDXEdit (yet)
 
 ### Changelog
 
