@@ -74,4 +74,4 @@ none, for now
 
 ### Changelog
 
-Version 1: Release
+30/03/2022: Version 1: Release
