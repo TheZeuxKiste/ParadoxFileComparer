@@ -2,7 +2,8 @@
 
 ## What is this?
 
-A Tool to find probably conflicting Game Files from Paradox' Crusader Kings 3 and open them in VS Code. It doesn't actually compare any files for you.
+A Tool to find probably conflicting Game Files from Paradox' Crusader Kings 3 and open them in VS Code.  
+Despite the name, it doesn't actually compare any files for you.
 
 ---
 
