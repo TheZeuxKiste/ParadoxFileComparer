@@ -16,7 +16,7 @@ rem modsfolder is path to pdx mod folder
 set modsfolder=%HOMEDRIVE%%HOMEPATH%\Documents\Paradox Interactive\Crusader Kings III
 
 
-rem iterate through the current folder and its sub folders, without default delims(delimiters)
+rem iterate through the current folder and its sub folders, without default delimiters
 rem if nothing found, search other folder for specifed file. same parameters.
 for /f "delims=" %%i in ('dir /b/s "..\%arg%" 2^>nul') do ( 
 
@@ -25,7 +25,8 @@ for /f "delims=" %%i in ('dir /b/s "..\%arg%" 2^>nul') do (
 )
 
 :::::::::::::::::::::::::::::::::::::::::::::::::::::
-rem search secondary directory, your pdx mods folder, CURRENTLY OUT OF ORDER, ICE CREAM MAKER BROKE!!!!
+rem search secondary directory, your pdx mods folder: CURRENTLY OUT OF ORDER, ICE CREAM MACHINE BROKE!!!!
+rem for real tho, it doesnt do what i want it to do. it keeps spitting out nonsensical crap i cant use.
 :::::::::::::::::::::::::::::::::::::::::::::::::::::
 
 @REM rem change dir to your local mods folder in Documents --------------------(TODO implement customizable mod location to make compatible with other pdx titles.)
@@ -53,17 +54,12 @@ exit /b 0 rem exit with errorlevel 0; everything went well
 
 :ProcessErrorEmptyArg
 endlocal
-echo FINDVALIDFILES.BAT: what file do you want to find?
-echo FINDVALIDFILES.BAT: please enter it as an argument.
 exit /b 1 rem exit with errorlevel 1; no arguments passed to this file
 
 :ProcessErrorInvalidPath
 endlocal
-echo FINDVALIDFILES.BAT: something is wrong with your local game path!
-echo FINDVALIDFILES.BAT: please configure your config.json(TODO)
 exit /b 2 rem exit with errorlevel 2; invalid path
 
 :ProcessErrorNothingFound
 endlocal
-echo FINDVALIDFILES.BAT: nothing Found!
 exit /b 3 rem exit with errorlevel 3; no Results found

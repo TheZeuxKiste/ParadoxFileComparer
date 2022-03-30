@@ -4,8 +4,9 @@ import os
 import re
 import subprocess
 
-#from Scripts.Exceptions import StringTooLargeError
-
+# Paradox File Comparer, doesnt compare files though
+# Just finds the desired files to pull into VS Code
+# Version 1: Working User Interface
 
 def homeDriveNPath():  # get user directory, for use later
     var1 = os.environ['HOMEDRIVE']
