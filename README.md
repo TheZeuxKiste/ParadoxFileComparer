@@ -55,6 +55,7 @@ where your "current Playset" is stored, only gets updated when you press said St
 
 * find a way to speed the program up, its currently too slow for my taste
 * add support for local mods
+* move everything out of the Steam Workshop Folder into another location
 
 ### Long Term Goals
 
