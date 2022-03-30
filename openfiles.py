@@ -24,6 +24,7 @@ def pullFiles(var):
     return rtrn
 
 
+
 def main():
     #declare important variables
     delim = "<-split->"
