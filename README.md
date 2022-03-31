@@ -3,7 +3,9 @@
 ## What is this?
 
 A Tool to find probably conflicting Game Files from Paradox' Crusader Kings 3 and open them in VS Code.  
-Despite the name, it doesn't actually compare any files for you.
+Despite the name, it doesn't actually compare any files for you.  
+
+This version is Basically fully functional, only things that are missing is some QoL stuff
 
 ### Features
 
@@ -34,8 +36,8 @@ First, ParadoxFileComparer will ask you wether or not it should open a new VS Co
 Then it will ask you for the name of the file you are searching. Please enter the file name together with the extension here.  
 Now wait until the Program redirects you to VS Code, where your desired files are opened!
 
-ParadoxFileComparer currently only opens all Files in your current CK3 Launcher Playset, so I recommend that you create a new Playset with all installed Workshop Mods inside.  
-to change the current Playset, just change the Playset in the Launcher and press the Play Button. It doesn't matter wether or not the Game crashes,but from my observations, the dlc_load.json,  
+ParadoxFileComparer currently only opens all Files in your current CK3 Launcher Playset, and only from Mods from the Steam Workshop for now, so I recommend that you create a new Playset with all those inside.  
+To change the current Playset, just change the Playset in the Launcher and press the Play Button. It doesn't matter wether or not the Game crashes,but from my observations, the dlc_load.json,  
 where your "current Playset" is stored, only gets updated when you press said Start Button.
 
 ## Installation Guide
@@ -70,7 +72,9 @@ where your "current Playset" is stored, only gets updated when you press said St
 * find a way to speed the program up, its currently too slow for my taste
 * add support for local mods
 * move everything out of the Steam Workshop Folder into another location
-* create a command line quick access method, ie `openfiles /n window_character.gui`
+* create a command line quick access method  
+  for example `openfiles /n window_character.gui` to open a new instance, or  
+  `openfiles /r 
 
 ### Long Term Goals
 
