@@ -53,8 +53,9 @@ where your "current Playset" is stored, only gets updated when you press said St
 
    2. Create a new Folder inside the Workshop Folder, you can call it "Script", "ParadoxFileFinder" or "ULMISALMIGHTY!!!", for example
 
-   3. Copy `openfiles.exe` as well as `findvalidfiles.bat` to the newly created folder:  
-   [Image goes Here]
+   3. Copy `openfiles.exe` as well as `findvalidfiles.bat` to the newly created folder like this:  
+
+   ![PDXFCGitExample](https://user-images.githubusercontent.com/55666722/161113177-3c327c26-3142-4b84-9617-d05fa08213e9.PNG)  
 
    4. Done!
 
@@ -74,11 +75,12 @@ where your "current Playset" is stored, only gets updated when you press said St
 * move everything out of the Steam Workshop Folder into another location
 * create a command line quick access method  
   for example `openfiles /n window_character.gui` to open a new instance, or  
-  `openfiles /r 
+  `openfiles /r window_character.gui` to reuse an existing one
 
 ### Long Term Goals
 
-none, for now
+* move Localization to external JSON
+ * add German localization
 
 ### Late Long Term Goals
 
@@ -87,7 +89,8 @@ none, for now
   2. Victoria 3
   3. Hearts of Iron 4
   4. Europa Universalis 4
-* localize the Program into different Languages
+
+* localize the Program into different Languages besides English and German
 
 ### What i dont plan to do
 
