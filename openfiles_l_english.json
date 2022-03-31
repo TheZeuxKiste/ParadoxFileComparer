@@ -1,0 +1,38 @@
+{
+    "Hints": [
+        {
+            "abortH": "FileComparer: >>> Press CTRL + C to abort"
+        },
+        {
+            "confirmH": "FileComparer: >>> Type [y/Yes] or [n/No]"
+        }
+    ],
+    "Questions": [
+        {
+            "instanceQ": "FileComparer: >>> Do you want to open your Files in your current Instance of VS Code?"
+        },
+        {
+            "FileQ": "FileComparer: >>> Enter your desired File, please:"
+        }
+    ],
+    "Texts": [
+        {
+            "OnlyPlaysetT": "FileComparer: >>> Do you want to include Files from your current Playset Only?"
+        },
+        {
+            "ChoicesT": "FileComparer: >>> Please Confirm your Choices:"
+        },
+        {
+            "SelectedFileT": "FileComparer: >>>   selected File:   %s"
+        },
+        {
+            "SelectedVSCModeT": "FileComparer: >>>    VS Code Mode:   %s"
+        },
+        {
+            "PlaysetDispModeT":"FileComparer: >>> open from Current Playset only?:   %s"
+        },
+        {
+            "UserInputT": "FileComparer: <<< "
+        }
+    ]
+}
