@@ -10,7 +10,7 @@ import subprocess
 # Just finds the desired files to pull into VS Code
 # Version 1: Working User Interface
 
-userIOtxt = [ # user IO text
+userIOtxt = [ # user IO text, temp, plan on export it to json
     'FileComparer: >>> Press CTRL + C to abort',
     'FileComparer: >>> Do you want to open your Files in your current Instance of VS Code?',
     'FileComparer: >>> Type [y/Yes] or [n/No]',
@@ -19,8 +19,7 @@ userIOtxt = [ # user IO text
     'FileComparer: >>>   selected File:   %s',
     'FileComparer: >>>    VS Code Mode:   %s',
 
-    'FileComparer: <<< ',
-    'FileComparer: >>> '
+    'FileComparer: <<< '
 ]
 
 
@@ -51,6 +50,14 @@ def regexSplit(pattern, string):
 
 def clear(): return os.system('cls')
 
+def PathRefinery(string):
+    # takes one long path seperated by spaces
+    # escapes all backslashes and splits it into a list.
+    var = r' '
+    for i in regexSplit(r'\s(?=[A-Z]:\\)', string):
+        var = var + r' ' + re.sub(r'(?<=\\)', r'\\', i, re.MULTILINE)
+    out = regexSplit(r'\s(?=[A-Z]:\\)', var)
+    return out
 
 def main():
 
@@ -61,7 +68,8 @@ def main():
     lIVScode = False
     modeVSC = ''
     endIOLoop = False
-
+    usePlaysetFilter = True
+    
     # User Interface loop
     clear()
     while not endIOLoop:
@@ -121,6 +129,16 @@ def main():
             userIOtxt[7]  # [7]: User Input Text
         )
         while 1:
+            print(
+                userIOtxt[0],  # [0]: Cancel Text
+                userIOtxt[4],  # [4]: Confirm Choices
+                userIOtxt[5] % userInput,  # [5]: display Desired File
+                userIOtxt[6] % modeVSC,  # [6]: display VS Code Mode
+                sep='\n'      # newline seperator
+            )
+            userYN = input(
+                userIOtxt[7]  # [7]: User Input Text
+            )
             if re.search(r'yes|YES|Yes|y|Y', userYN):
                 endIOLoop = True
                 clear()
@@ -154,10 +172,7 @@ def main():
     # pull target files string, format it correctly to process later
     findValidFilesResults = regexSplit(r'\s(?=[A-Z]:\\)', pullFiles(userInput))
 
-    #################################################
-    ####### mainpart: compare the two strings #######
-    #################################################
-
+    # compare the strings:
     # iterater over the string
     for obj in findValidFilesResults:
         # find the numbers in the Directory String passed by findvalidfiles.bat
@@ -166,33 +181,42 @@ def main():
             # save all results here, to compare them later
             stringOut = matchString.group('out')
 
-        # iterate through the 'dlc_load.json' file, 'enabled_mods' key, to find all active mods
-        for row in dlc_load['enabled_mods']:
+        #check for active playset filter
+        if usePlaysetFilter:
+            
+            # iterate through the 'dlc_load.json' file, 'enabled_mods' key, to find all active mods
+            for row in dlc_load['enabled_mods']:
 
-            # match every object belonging to the key enabled_mods in the dlc_load.json and save results in matchJson
-            matchJson = re.search(r'(/ugc_)(?P<out>\w*)(\.mod)', row)
-            if matchJson:
+                # match every object belonging to the key enabled_mods in the dlc_load.json and save results in matchJson
+                matchJson = re.search(r'(/ugc_)(?P<out>\w*)(\.mod)', row)
+                if matchJson:
 
-                # Combine matches into fileString
-                # if the mod is in the playset, add its path to the final output file
-                if stringOut == matchJson.group('out'):
-                    fileString = fileString + ' ' + obj
+                    # Combine matches into fileString
+                    # if the mod is in the playset, add its path to the final output file
+                    if stringOut == matchJson.group('out'):
+                        fileString = fileString + ' ' + obj
+        else:
+            # just flextape all objects back to back of oneother
+            fileString = fileString + " " + obj
 
-    s = r' '
+    # Path Refinery, refines and escapes the path delims with \
+    fileString = PathRefinery(fileString)
 
-    tesSTR = regexSplit(r'\s(?=[A-Z]:\\)', fileString)
-
-    for i in tesSTR:
-        s = s + r' ' + re.sub(r'(?<=\\)', r'\\', i, re.MULTILINE)
-
-    fileString = regexSplit(r'\s(?=[A-Z]:\\)', s)
-
+    # checks for vs code new instance. found out that if the first
+    # element is empty, VS Code opens a new instance, so i keep it when user wants a new one 
+    # and delete it if they want to open in current instance
     if lIVScode:
         del fileString[0]
 
+    # prints all found Paths, then opens them in vs code
+    ic = 0
     for i in fileString:
-        print('Match: '+i)
+        if ic == 0:
+            print("")
+        else:
+            print('Match: '+i)
         subprocess.run([exeLoc, i])
+        ic = ic + 1
 
     return 0
 
