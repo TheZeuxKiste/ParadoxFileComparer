@@ -1,10 +1,10 @@
 import argparse
-from asyncio.windows_events import NULL
-from distutils.log import ERROR, error
 import json
 import os
 import re
 import subprocess
+from asyncio.windows_events import NULL
+from distutils.log import ERROR, error
 
 # Paradox File Comparer, doesnt compare files though
 # Just finds the desired files to pull into VS Code
@@ -115,19 +115,8 @@ def main():
         userInput = input(
             userIOtxt[7]  # [7]: User Input Text
         )
-
-        clear()
-
-        print(
-            userIOtxt[0],  # [0]: Cancel Text
-            userIOtxt[4],  # [4]: Confirm Choices
-            userIOtxt[5] % userInput,  # [5]: display Desired File
-            userIOtxt[6] % modeVSC,  # [6]: display VS Code Mode
-            sep='\n'      # newline seperator
-        )
-        userYN = input(
-            userIOtxt[7]  # [7]: User Input Text
-        )
+        
+        clear()        
         while 1:
             print(
                 userIOtxt[0],  # [0]: Cancel Text
@@ -152,6 +141,7 @@ def main():
                 print('\a')
                 clear()
                 continue
+
 
     # pull neccessary data from respective sources: JSON file at local game data directory
 
