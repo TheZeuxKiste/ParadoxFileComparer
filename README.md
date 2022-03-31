@@ -92,3 +92,16 @@ none, for now
 ### Changelog
 
 30/03/2022: Version 1: Release
+
+---
+
+#### Disclaimer
+
+ i am neither associated with, nor own any of the Following:
+
+* Paradox Interactive or its associates
+* Europa Universalis 4
+* Stellaris
+* Victoria 3
+* Hearts of Iron 4
+* Crusader Kings 3
