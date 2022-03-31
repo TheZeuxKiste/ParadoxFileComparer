@@ -5,12 +5,24 @@
 A Tool to find probably conflicting Game Files from Paradox' Crusader Kings 3 and open them in VS Code.  
 Despite the name, it doesn't actually compare any files for you.
 
----
-
 ### Features
 
 * Allows you to find all Files of a specified type (e.g. window_character.gui or descriptor.mod) inside the Steam Workshop Folder
 * Opens those Files in VS Code for you to compare them and find Conflicts
+
+### How it Works
+
+The Program will ask the User, which File They want to find, and then crawl through the Mods Folder with a simple .bat Program.
+
+Every time a file matches, its path is attached to the back of a string. When no more matches are found,
+the String is returned back to the main program.  
+
+Then, it uses Regular Expressions to find out wether or not the found file is inside a mod that is currently active. it uses the dlc_load.json file for this.  
+If it isnt, the part of the string containing the path in question is discarded.  
+
+Finally, the String containing the filtered Paths is passed to VS Code to open.  
+
+You can find the source code in `openfiles.py` and `findvalidfiles.bat`
 
 ### Currently Supported Games
 
@@ -58,6 +70,7 @@ where your "current Playset" is stored, only gets updated when you press said St
 * find a way to speed the program up, its currently too slow for my taste
 * add support for local mods
 * move everything out of the Steam Workshop Folder into another location
+* create a command line quick access method, ie `openfiles /n window_character.gui`
 
 ### Long Term Goals
 
